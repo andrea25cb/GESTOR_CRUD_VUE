@@ -1,6 +1,6 @@
  <template>
- 
-  <div class="container bg-dark rounded-5" style="width:400px" id="login">   
+
+  <div class="container bg-dark rounded-5" style="width:400px; margin-top:6%" id="login">   
     <br> <br> 
     <h1 class="text-white"><strong>LOGIN:</strong> </h1>  
     <div class="card bg-success-subtle rounded-5">
@@ -32,14 +32,11 @@
   data() {
     return {
       usuario:{},
-      // email:'',
-      // pass:'',
       error:false
     }
   },
 
     created:function() {
-        // this.submitForm();
 
     },
   methods: {
@@ -70,3 +67,10 @@
   },
 };
 </script>
+
+<style>
+body{
+  background-image: url('https://i.pinimg.com/564x/11/71/f8/1171f82f8594e8e6012f3d2ece638068.jpg');
+  background-size:100% 100%;
+}
+</style>

@@ -86,7 +86,7 @@ data(){
       },
       actualizarRegistro(){
         //creo un objeto json:
-        var datosEnviar ={nombre:this.cliente.nombre,apellidos:this.cliente.apellidos,tlf:this.cliente.tlf,cp:this.cliente.cp,provincia:this.cliente.provincia,municipio:this.cliente.provincia,tipo:this.cliente.tipo}
+        var datosEnviar ={nombre:this.cliente.nombre,apellidos:this.cliente.apellidos,tlf:this.cliente.tlf,cp:this.cliente.cp,provincia:this.cliente.provincia,municipio:this.cliente.municipio,tipo:this.cliente.tipo}
        
        
             fetch('http://localhost/proyectovuejs/?editarCliente='+this.$route.params.id,{

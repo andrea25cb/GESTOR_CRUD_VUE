@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-expand-lg bg-dark text-uppercase fixed-top">
+    <nav v-if="!$route.meta.hideNavbar" class="navbar navbar-expand-lg bg-dark text-uppercase fixed-top">
       <div class="container">
 
           <div class="container d-flex align-items-center flex-column">
@@ -34,8 +34,16 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   
+}
+
+body{
   background-image: url('https://i.pinimg.com/564x/11/71/f8/1171f82f8594e8e6012f3d2ece638068.jpg');
   background-size:100% 100%;
+}
+
+nav { 
+overflow:hidden;
+transition: 1s all; 
 }
 
 nav a {

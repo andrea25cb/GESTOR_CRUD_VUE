@@ -14,7 +14,7 @@ import CrearCliente from '../components/CrearCliente.vue'
 // import DetallesUsuario from '../components/DetallesUsuario.vue'
 // import DetallesPoliza from '../components/DetallesPoliza.vue'
 import DetallesCliente from '../components/DetallesCliente.vue'
-import LoginForm from '../components/LoginForm.vue'
+// import LoginForm from '../components/LoginForm.vue'
 
 // import LogoutForm from '../components/RegisterForm.vue'
 
@@ -25,7 +25,11 @@ const routes = [
     {
         path: '/',
         name: 'login',
-        component: LoginForm
+        component: () =>
+            import ('@/components/LoginForm.vue'),
+        meta: {
+            hideNavbar: true,
+        }
     },
 
     {

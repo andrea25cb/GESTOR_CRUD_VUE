@@ -62,16 +62,14 @@ const swalWithBootstrapButtons = Swal.mixin({
 export default {
 
 data(){
-
     return{
         clientes:[],
         search: ''
     }
 },
-
     created:function() {
         this.dameclientes();
-
+        this.nombreProvincias()
     },
     computed: {
         filteredData() {
@@ -80,13 +78,12 @@ data(){
         },
     },
     methods:{
-        //
         dameclientes(){
             fetch('http://localhost/proyectovuejs/?dameClientes')
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
 
-                console.log(datosRespuesta)
+                
                 this.clientes = []
                 if(typeof datosRespuesta[0].success==='undefined')
                 {
@@ -95,6 +92,21 @@ data(){
             })
             .catch(console.log)
         },
+
+        nombreProvincias(){
+        fetch('http://localhost/proyectovuejs/?dameNombreProvincias='+this.cliente.provincia)
+            .then(respuesta=>respuesta.json())
+            .then((datosRespuesta)=>{
+
+                this.provincias = []
+                if(typeof datosRespuesta[0].success==='undefined')
+                {
+                    this.provincias = datosRespuesta;
+                }
+              
+            })
+            .catch(console.log)
+      },
 
         borrarcliente(id){
            console.log(id);
@@ -118,20 +130,20 @@ data(){
             cancelButtonText: 'No, cancel!',
             reverseButtons: true
         }).then((result) => {
-  if (result.isConfirmed) {
+        if (result.isConfirmed) {
 
-    swalWithBootstrapButtons.fire(
-        this.borrarcliente(id),
-      'Deleted!',
-      'Your file has been deleted.',
-      'success'
-    )
-      } else if ( /* Read more about handling dismissals below */
-    result.dismiss === Swal.DismissReason.cancel){
-            swalWithBootstrapButtons.fire('Cancelled', 'Your file is still intact', 'info')
-          }
-        })
-      }
+            swalWithBootstrapButtons.fire(
+                this.borrarcliente(id),
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+            )
+            } else if ( /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel){
+                    swalWithBootstrapButtons.fire('Cancelled', 'Your file is still intact', 'info')
+                }
+                })
+            }
 }
 }
 </script>

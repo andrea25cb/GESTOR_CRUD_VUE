@@ -1,4 +1,4 @@
-# GESTOR DE SEGUROS CRUD
+# GESTOR CRUD VUE
 
 ## Project setup
 ```

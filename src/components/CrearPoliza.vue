@@ -19,14 +19,15 @@
             </div><br>
             <div class="form-group, selectedClass">
                 <label for="estado">ESTADO</label>
-                <select v-model="colorLocal"  class="form-control" id="estado">
-                    <option class="bg-danger" >cobrada</option>
-                    <option class="bg-info">a cuenta</option>
-                    <option class="bg-success">liquidada</option>
-                    <option class="bg-warning">anulada</option>
-                    <option class="bg-primary">pre-anulada</option>
+                <select v-model="poliza.estado" class="form-control" id="estado">
+                    <!-- value:red -->
+                    <option>cobrada</option> 
+                    <option>acuenta</option>
+                    <option>liquidada</option>
+                    <option>anulada</option>
+                    <option>preanulada</option>
                 </select>
-            <div :class="colorLocal">hola</div>
+         
             </div><br>
             <div class="form-group">
                 <label for="municipio">OBSERVACIONES</label>
@@ -66,17 +67,12 @@ data(){
         this.agregarRegistro();
         this.dameClientes();
     },
-    watch: {
-  colorLocal (color) {
-    this.$emit('actualizarColor', color)
-  }
-  },
     methods:{
         
         agregarRegistro(){
             // console.log(this.poliza);
 
-            var datosEnviar ={importe:this.poliza.importe,fecha:this.poliza.fecha,estado:this.colorLocal,observaciones:this.poliza.observaciones,cliente_id:this.poliza.cliente_id}
+            var datosEnviar ={importe:this.poliza.importe,fecha:this.poliza.fecha,estado:this.poliza.estado,observaciones:this.poliza.observaciones,cliente_id:this.poliza.cliente_id}
        
             fetch('http://localhost/proyectovuejs/?insertarPoliza=1',{
 

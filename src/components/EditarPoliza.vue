@@ -19,14 +19,14 @@
             </div><br>
             <div class="form-group, selectedClass">
                 <label for="estado">ESTADO</label>
-                <select v-model="colorLocal" class="form-control" id="estado">
-                    <option class="bg-success">cobrada</option>
-                    <option class="bg-info">a cuenta</option>
-                    <option class="bg-warning">liquidada</option>
-                    <option class="bg-danger">anulada</option>
-                    <option class="bg-primary">pre-anulada</option>
+                <select v-model="poliza.estado" class="form-control" id="estado">
+                    <!-- value:red -->
+                    <option>cobrada</option> 
+                    <option>acuenta</option>
+                    <option>liquidada</option>
+                    <option>anulada</option>
+                    <option>preanulada</option>
                 </select>
-                <div :style="{'background-color': colorLocal }">hola</div>
             </div><br>
             <div class="form-group">
                 <label for="municipio">OBSERVACIONES</label>
@@ -56,7 +56,6 @@ data(){
 
     return{
         poliza:{},
-        colorLocal: '',
         clientes:{}
     }
 },
@@ -66,11 +65,7 @@ data(){
         this.dameClientes();
        
     },
-    watch: {
-  colorLocal (color) {
-    this.$emit('actualizarColor', color)
-  }
-  },
+
     methods:{
       obtenerID(){
         fetch('http://localhost/proyectovuejs/?detallesPoliza='+this.$route.params.id)

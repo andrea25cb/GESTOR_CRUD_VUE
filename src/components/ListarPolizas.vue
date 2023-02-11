@@ -1,13 +1,13 @@
 <template>
 
-    <div class="container rounded-5" id="listar">  
+    <div class="container rounded-5" id="listar">
         <br>
         <input type="text" class="form-control" v-model="search" placeholder="BUSCAR POLIZA POR SU ID" style="float:right">
  <br>
-        <h1 class="text-white"><strong>POLIZAS:</strong> </h1>  
+        <h1 class="text-white"><strong>POLIZAS:</strong> </h1>
         <router-link :to="{name:'crearPoliza'}" class="btn btn-success" style="float:none">NUEVA POLIZA</router-link><br><br><br>
         <div class="card rounded-5">
-     
+
         <div class="card-body">
             <table class="table">
                 <thead>
@@ -22,66 +22,76 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-bind:class="{'background-color': colorSeleccionado }" v-for="poliza in filteredData" :key="poliza.id">
+                <tr v-for="poliza in filteredData" :key="poliza.id"  :class="colorSegunEstado(poliza.estado)">
                     <td>{{poliza.id}}</td>
                     <td>{{poliza.importe}}</td>
                     <td>{{poliza.fecha}}</td>
                     <td>{{poliza.estado}}</td>
                     <td>{{poliza.observaciones}}</td>
                     <td>  <router-link :to="{name:'detallesCliente',params:{id:poliza.cliente_id}}" class="btn btn-warning">{{poliza.cliente_id}}</router-link></td>
-                    <td>  
+                    <td>
                     <div class="btn-group" role="group" aria-label="">
                         <!-- para que vaya a la ruta de editar y le pase el id: -->
                     <router-link :to="{name:'editarPoliza',params:{id:poliza.id}}" class="btn btn-info">EDITAR</router-link>
                     <button v-on:click="confirmarBorrado(poliza.id)" class="btn btn-danger">BORRAR</button>
                     </div>
                 </td>
-                </tr>   
+                </tr>
             </tbody>
             </table>
             </div>
             </div><br>
         </div>
- 
+
 </template>
 
 <script>
-const Swal = require('sweetalert2');
+const Swal = require('sweetalert2')
 const swalWithBootstrapButtons = Swal.mixin({
   customClass: {
     confirmButton: 'btn btn-success',
     cancelButton: 'btn btn-danger'
   },
   buttonsStyling: false
-})
+});
+
+const estados = {
+  cobrada: 'cobrada',
+  acuenta: 'a cuenta',
+  liquidada: 'liquidada',
+  anulada: 'anulada',
+  preanulada: 'preanulada',
+};
 export default {
 
 data(){
 
     return{
         polizas:[],
-        colorSeleccionado:'',
+        // colorSeleccionado:'',
         search: ''
     }
 },
 
     created:function() {
         this.damePolizas();
-        this.actualizarColor
+        // this.actualizarColor();
 
     },
     computed: {
         filteredData() {
         return this.polizas.filter(poliza => (poliza.id).includes(this.search.toLowerCase()));
-        
+
         },
     },
     methods:{
-  
-        actualizarColor (color) {
-            console.log(color);
-    this.colorSeleccionado = color
-  },
+        colorSegunEstado(state) {
+        console.log('Policy state ', state);
+        var className = 'bg-none';
+          if (!Object.keys(estados).includes(state)) return className; // default className if state is not mapped on state object
+            return `bg-${state.toLowerCase()}`;
+        },
+
         damePolizas(){
             fetch('http://localhost/proyectovuejs/?damePolizas')
             .then(respuesta=>respuesta.json())
@@ -105,7 +115,7 @@ data(){
             .then((datosRespuesta)=>{
 
                 console.log(datosRespuesta)
-                window.location.href="listarPolizas"
+
             })
             .catch(console.log)
         },
@@ -136,3 +146,31 @@ data(){
     }
   }
 </script>
+<!-- CREO UNA CLASE NUEVA PARA CADA ESTADO -->
+<style>
+
+.table .bg-none {
+  background-color: lightgray;
+}
+.table .bg-cobrada {
+  background-color: rgb(255, 174, 25);
+  opacity: 0.8;
+}
+
+.table .bg-acuenta {
+  background-color: rgb(96, 240, 96);
+  opacity: 0.8;
+}
+.table .bg-liquidada {
+  background-color: rgb(140, 0, 255);
+  opacity: 0.8;
+}
+.table .bg-anulada {
+  background-color: rgb(255, 38, 0);
+  opacity: 0.8;
+}
+.table .bg-preanulada {
+  background-color: rgb(255, 71, 240);
+  opacity: 0.8;
+}
+</style>

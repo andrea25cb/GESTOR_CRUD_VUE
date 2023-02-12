@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    
     <nav v-if="!$route.meta.hideNavbar" class="navbar navbar-expand-lg bg-dark text-uppercase fixed-top">
       <div class="container">
 
@@ -60,3 +61,4 @@ nav a.router-link-exact-active {
   background-size: cover;
 }
 </style>
+

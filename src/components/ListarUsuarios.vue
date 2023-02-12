@@ -98,25 +98,25 @@ data(){
         },
         confirmarBorrado(id) {
         swalWithBootstrapButtons.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: '¿ESTÁS SEGURO DE QUE QUIERES BORRARLO?',
+            text: "¡No habrá vuelta atrás!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, cancel!',
+            confirmButtonText: 'SÍ, ¡BORRA!',
+            cancelButtonText: 'MEJOR NO...',
             reverseButtons: true
         }).then((result) => {
   if (result.isConfirmed) {
 
     swalWithBootstrapButtons.fire(
         this.borrarcliente(id),
-      'Deleted!',
-      'Your file has been deleted.',
+        '¡BORRADO!',
+      'Tu dato ha sido borrado.',
       'success'
     )
       } else if ( /* Read more about handling dismissals below */
     result.dismiss === Swal.DismissReason.cancel){
-            swalWithBootstrapButtons.fire('Cancelled', 'Your file is still intact', 'info')
+            swalWithBootstrapButtons.fire('Operación cancelada', 'Tu dato sigue a salvo.', 'info')
           }
         })
       }
@@ -124,3 +124,8 @@ data(){
 }
 </script>
 
+<style>
+.table th {
+  text-align: center;
+}
+</style>

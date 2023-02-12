@@ -17,7 +17,6 @@
                     <th>APELLIDOS</th>
                     <th>TLF</th>
                     <th>MUNICIPIO</th>
-                    <th>CP</th>
                     <th>PROVINCIA</th>
                     <th>TIPO</th>
                 </tr>
@@ -29,7 +28,6 @@
                     <td>{{cliente.apellidos}}</td>
                     <td>{{cliente.tlf}}</td>
                     <td>{{cliente.municipio}}</td>
-                    <td>{{cliente.cp}}</td>
                     <td>{{cliente.provincia}}</td>
                     <td>{{cliente.tipo}}</td>
                    
@@ -122,29 +120,33 @@ data(){
         },
         confirmarBorrado(id) {
         swalWithBootstrapButtons.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: '¿ESTÁS SEGURO DE QUE QUIERES BORRARLO?',
+            text: "¡No habrá vuelta atrás!",
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, cancel!',
+            confirmButtonText: 'SÍ, ¡BORRA!',
+            cancelButtonText: 'MEJOR NO...',
             reverseButtons: true
         }).then((result) => {
         if (result.isConfirmed) {
 
             swalWithBootstrapButtons.fire(
                 this.borrarcliente(id),
-            'Deleted!',
-            'Your file has been deleted.',
-            'success'
-            )
-            } else if ( /* Read more about handling dismissals below */
-            result.dismiss === Swal.DismissReason.cancel){
-                    swalWithBootstrapButtons.fire('Cancelled', 'Your file is still intact', 'info')
-                }
-                })
+                '¡BORRADO!',
+      'Tu dato ha sido borrado.',
+      'success'
+    )
+      } else if ( /* Read more about handling dismissals below */
+    result.dismiss === Swal.DismissReason.cancel){
+            swalWithBootstrapButtons.fire('Operación cancelada', 'Tu dato sigue a salvo.', 'info')
+          }
+        })
             }
 }
 }
 </script>
 
+<style>
+.table th {
+  text-align: center;
+}</style>

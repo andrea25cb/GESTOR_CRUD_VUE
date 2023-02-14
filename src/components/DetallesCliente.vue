@@ -40,7 +40,7 @@
     <div class="card">
         <router-link :to="{name:'crearPoliza'}" class="btn btn-success" style="float:none">NUEVA POLIZA</router-link>
        <div class="card-body">
-        <table class="table table-striped">
+        <table class="table">
             <thead>
             <tr>
                 <th>ID</th>
@@ -52,7 +52,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="poliza in polizas" :key="poliza.id">
+            <tr v-for="poliza in polizas" :key="poliza.id"  :class="colorSegunEstado(poliza.estado)">
                 <td>{{poliza.id}}</td>
                 <td>{{poliza.importe}}</td>
                 <td>{{poliza.fecha}}</td>
@@ -68,13 +68,25 @@
             </tr>   
         </tbody>
         </table>
+        <div class="btn-group" role="group" aria-label="">
+           
+            <router-link :to="{name:'listarPolizas'}" class="btn btn-info">VOLVER</router-link>
+        </div>
         </div>
     </div><br>
 </div>
 </template>
 
 <script>
+const estados = {
+  cobrada: 'cobrada',
+  acuenta: 'a cuenta',
+  liquidada: 'liquidada',
+  anulada: 'anulada',
+  preanulada: 'preanulada',
+};
 export default {
+    
 data(){
 
     return{
@@ -89,6 +101,12 @@ data(){
 
 },
     methods:{
+        colorSegunEstado(state) {
+        console.log('Policy state ', state);
+        var className = 'bg-none';
+          if (!Object.keys(estados).includes(state)) return className; // default className if state is not mapped on state object
+            return `bg-${state.toLowerCase()}`;
+        },
       detalles(){
         fetch('http://localhost/proyectovuejs/?detallesCliente='+this.$route.params.id)
             .then(respuesta=>respuesta.json())
@@ -120,3 +138,33 @@ data(){
 }
 </script>
 
+<!-- CREO UNA CLASE NUEVA PARA CADA ESTADO -->
+<style>
+.table th {
+  text-align: center;
+}
+.table .bg-none {
+  background-color: lightgray;
+}
+.table .bg-cobrada {
+  background-color: rgb(255, 174, 25);
+  opacity: 0.8;
+}
+
+.table .bg-acuenta {
+  background-color: rgb(96, 240, 96);
+  opacity: 0.8;
+}
+.table .bg-liquidada {
+  background-color: rgb(140, 0, 255);
+  opacity: 0.8;
+}
+.table .bg-anulada {
+  background-color: rgb(255, 38, 0);
+  opacity: 0.8;
+}
+.table .bg-preanulada {
+  background-color: rgb(255, 71, 240);
+  opacity: 0.8;
+}
+</style>

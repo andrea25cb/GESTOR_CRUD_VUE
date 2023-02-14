@@ -8,18 +8,10 @@
         <router-link :to="{name:'crearPoliza'}" class="btn btn-success" style="float:none">NUEVA POLIZA</router-link><br><br><br>
         <div class="card rounded-5">
 
-        <div class="card-body">
-      
+          <div class="card-body">
             <table class="table">
-              
                 <thead>
-                <tr>
-                  <datatable-header
-                  v-for="(headColumn, i) in normalizedColumns"
-                  :key="i"
-                  :column="headColumn"
-                  :direction="getSortDirectionForColumn(headColumn)"
-                  @change="setSortDirectionForColumn" />
+                   <tr>
                     <th>ID</th>
                     <th>IMPORTE</th>
                     <th>FECHA</th>
@@ -65,7 +57,7 @@ const swalWithBootstrapButtons = Swal.mixin({
 
 const estados = {
   cobrada: 'cobrada',
-  acuenta: 'a cuenta',
+  acuenta: 'acuenta',
   liquidada: 'liquidada',
   anulada: 'anulada',
   preanulada: 'preanulada',
@@ -138,7 +130,7 @@ data(){
             reverseButtons: true
         }).then((result) => {
   if (result.isConfirmed) {
-
+    window.location.href = "../listarPolizas";
     swalWithBootstrapButtons.fire(
         this.borrarpoliza(id),
       '¡BORRADO!',
@@ -161,7 +153,7 @@ data(){
   text-align: center;
 }
 .table .bg-none {
-  background-color: lightgray;
+  background-color: lightblue;
 }
 .table .bg-cobrada {
   background-color: rgb(255, 174, 25);

@@ -21,7 +21,7 @@
               </ul>
           </div>
       </div>
-  </nav>
+  </nav><br><br><br><br><br><br>
    
     <router-view/><br><br><br><br><br><br><br><br><br>
     <div class="bg-dark fixed-bottom text-white text-center align-items-center"> Andrea Cordón Barrionuevo</div>
@@ -35,6 +35,10 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   
+}
+
+button{
+  background: #e92323;
 }
 
 body{

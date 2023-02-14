@@ -2,13 +2,12 @@
 
     <div class="container rounded-5" id="listar">  
         <br>
-        <input type="text" class="form-control" v-model="search" placeholder="BUSCAR USUARIO POR SU NOMBRE" style="float:right">
- <br>
+ 
         <h1 class="text-white"><strong>USUARIOS:</strong> </h1>  
         <router-link :to="{name:'crearUsuario'}" class="btn btn-success" style="float:none">NUEVO USUARIO</router-link><br><br><br>
         <div class="card rounded-5">
         <div class="card-body">
-            <table class="table table-striped">
+            <table id="myTable" class="table table-striped table-bordered text-center align-center" style="width:80%;margin-left:10%">
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -19,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="usuario in filteredData" :key="usuario.id">
+                <tr v-for="usuario in usuarios" :key="usuario.id">
                     <td>{{usuario.id}}</td>
                     <td>{{usuario.nombre}}</td>
                     <td>{{usuario.email}}</td>
@@ -41,6 +40,7 @@
 </template>
 
 <script>
+import $ from "jquery";
 const Swal = require('sweetalert2');
 const swalWithBootstrapButtons = Swal.mixin({
   customClass: {
@@ -55,7 +55,7 @@ data(){
 
     return{
         usuarios:[],
-        search: ""
+       
     }
 },
 
@@ -63,11 +63,7 @@ data(){
         this.dameusuarios();
 
     },
-    computed: {
-        filteredData() {
-        return this.usuarios.filter(usuarios => (usuarios.nombre).includes(this.search.toLowerCase()));
-        },
-    },
+
     methods:{
         dameusuarios(){
             fetch('http://localhost/proyectovuejs/?dameUsuarios')
@@ -80,6 +76,9 @@ data(){
                 {
                     this.usuarios = datosRespuesta;
                 }
+                this.$nextTick(function(){
+                    $('#myTable').DataTable();
+                })
             })
             .catch(console.log)
         },

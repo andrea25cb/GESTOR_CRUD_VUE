@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
+// import JqueryTable from '../components/JqueryTable.vue'
+
 import EditarUsuario from '../components/EditarUsuario.vue'
 import EditarPoliza from '../components/EditarPoliza.vue'
 import EditarCliente from '../components/EditarCliente.vue'
@@ -42,85 +44,62 @@ const routes = [
         path: '/crearUsuario',
         name: 'crearUsuario',
         component: CrearUsuario,
-        meta: { requireAuth: true }
+
     },
     {
         path: '/crearPoliza',
         name: 'crearPoliza',
         component: CrearPoliza,
-        meta: { requireAuth: true }
+
     },
     {
         path: '/crearCliente',
         name: 'crearCliente',
         component: CrearCliente,
-        meta: { requireAuth: true }
+
     },
     {
         path: '/listarUsuarios',
         name: 'listarUsuarios',
         component: ListarUsuarios,
-        meta: { requireAuth: true }
+
     },
     {
         path: '/listarPolizas',
         name: 'listarPolizas',
         component: ListarPolizas,
-        meta: { requireAuth: true }
+
     },
     {
         path: '/listarClientes',
         name: 'listarClientes',
         component: ListarClientes,
-        meta: { requireAuth: true }
+
     },
-    // {
-    //     path: '/detallesUsuario',
-    //     name: 'detallesUsuario',
-    //     component: DetallesUsuario,
-    //     meta: { requireAuth: true }
-    // },
-    // {
-    //     path: '/detallesPoliza',
-    //     name: 'detallesPoliza',
-    //     component: DetallesPoliza,
-    //     meta: { requireAuth: true }
-    // },
     {
         path: '/detallesCliente',
         name: 'detallesCliente',
         component: DetallesCliente,
-        meta: { requireAuth: true }
+
     },
     {
         path: '/editarUsuario',
         name: 'editarUsuario',
         component: EditarUsuario,
-        meta: { requireAuth: true }
+
     },
     {
         path: '/editarPoliza',
         name: 'editarPoliza',
         component: EditarPoliza,
-        meta: { requireAuth: true }
+
     },
     {
         path: '/editarCliente',
         name: 'editarCliente',
         component: EditarCliente,
-        meta: { requireAuth: true }
-    },
 
-    // {
-    //     path: '/logout',
-    //     name: 'logout',
-    //     component: LogoutForm
-    // },
-    // {
-    //     path: '/register',
-    //     name: 'register',
-    //     component: RegisterForm
-    // },
+    },
 ]
 
 const router = new VueRouter({

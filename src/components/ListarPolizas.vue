@@ -2,14 +2,13 @@
 
     <div class="container rounded-5" id="listar">
         <br>
-        <input type="text" class="form-control" v-model="search" placeholder="BUSCAR POLIZA POR SU ID" style="float:right">
- <br>
+
         <h1 class="text-white"><strong>POLIZAS:</strong> </h1>
         <router-link :to="{name:'crearPoliza'}" class="btn btn-success" style="float:none">NUEVA POLIZA</router-link><br><br><br>
         <div class="card rounded-5">
 
           <div class="card-body">
-            <table class="table">
+            <table id="myTable" class="table" style="width:80%;margin-left:10%">
                 <thead>
                    <tr>
                     <th>ID</th>
@@ -22,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="poliza in filteredData" :key="poliza.id"  :class="colorSegunEstado(poliza.estado)">
+                <tr v-for="poliza in polizas" :key="poliza.id"  :class="colorSegunEstado(poliza.estado)">
                     <td>{{poliza.id}}</td>
                     <td>{{poliza.importe}}</td>
                     <td>{{poliza.fecha}}</td>
@@ -46,6 +45,7 @@
 </template>
 
 <script>
+import $ from "jquery";
 const Swal = require('sweetalert2')
 const swalWithBootstrapButtons = Swal.mixin({
   customClass: {
@@ -78,12 +78,7 @@ data(){
         // this.actualizarColor();
 
     },
-    computed: {
-        filteredData() {
-        return this.polizas.filter(poliza => (poliza.id).includes(this.search.toLowerCase()));
 
-        },
-    },
     methods:{
         colorSegunEstado(state) {
         console.log('Policy state ', state);
@@ -103,6 +98,9 @@ data(){
                 {
                     this.polizas = datosRespuesta;
                 }
+                this.$nextTick(function(){
+                    $('#myTable').DataTable();
+                })
             })
             .catch(console.log)
         },

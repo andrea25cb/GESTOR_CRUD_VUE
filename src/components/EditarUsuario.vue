@@ -45,7 +45,7 @@ data(){
     },
     methods:{
       obtenerID(){
-        fetch('http://localhost/proyectovuejs/?detallesUsuario='+this.$route.params.id)
+        fetch('php/?detallesUsuario='+this.$route.params.id)
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
 
@@ -60,7 +60,7 @@ data(){
         //creo un objeto json:
             var datosEnviar ={id:this.$route.params.id,nombre:this.usuario.nombre,email:this.usuario.email,pass:this.usuario.pass}
        
-            fetch('http://localhost/proyectovuejs/?editarUsuario='+this.$route.params.id,{
+            fetch('php/?editarUsuario='+this.$route.params.id,{
 
                 method: 'POST',
                 body:JSON.stringify(datosEnviar)

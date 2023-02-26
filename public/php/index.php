@@ -6,9 +6,13 @@ header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 // Conecta a la base de datos  con usuario, contraseña y nombre de la BD
-$username = "andreacordon";
-$password = "N2l@7nu1";
-$database = "andreacordon";
+// $username = "andreacordon";
+// $password = "N2l@7nu1";
+// $database = "andreacordon";
+
+$username = "admin";
+$password = "";
+$database = "proyectovuejs";
 
 $mysqli = new mysqli("localhost", $username, $password, $database);
 mysqli_set_charset($mysqli,'UTF8');
@@ -192,16 +196,6 @@ if(isset($_GET["editarPoliza"])){
 
 if (isset($_GET["dameProvincias"])){
     $sqlEmpleaados = mysqli_query($conexionBD,"SELECT * FROM provincias");
-    if(mysqli_num_rows($sqlEmpleaados) > 0){
-        $empleaados = mysqli_fetch_all($sqlEmpleaados,MYSQLI_ASSOC);
-        echo json_encode($empleaados);
-        exit();
-    }
-    else{  echo json_encode(["success"=>0]); }
-}
-
-if (isset($_GET["dameNombreProvincias"])){
-    $sqlEmpleaados = mysqli_query($conexionBD,"SELECT * FROM provincias WHERE provincia=".$_GET["dameNombreProvincias"]);
     if(mysqli_num_rows($sqlEmpleaados) > 0){
         $empleaados = mysqli_fetch_all($sqlEmpleaados,MYSQLI_ASSOC);
         echo json_encode($empleaados);

@@ -1,7 +1,7 @@
  <template>
 
   <div class="container bg-dark rounded-5" style="width:400px; margin-top:6%" id="login">   
-    <br> <br> 
+  
     <h1 class="text-white"><strong>LOGIN:</strong> </h1>  
     <div class="card bg-success-subtle rounded-5">
 

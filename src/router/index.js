@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../components/HomeView.vue'
 
-// import JqueryTable from '../components/JqueryTable.vue'
-
+import FiltrarDatos from '../components/FiltrarDatos.vue'
 import EditarUsuario from '../components/EditarUsuario.vue'
 import EditarPoliza from '../components/EditarPoliza.vue'
 import EditarCliente from '../components/EditarCliente.vue'
@@ -18,7 +17,6 @@ import CrearCliente from '../components/CrearCliente.vue'
 import DetallesCliente from '../components/DetallesCliente.vue'
 // import LoginForm from '../components/LoginForm.vue'
 
-// import LogoutForm from '../components/RegisterForm.vue'
 
 Vue.use(VueRouter)
     //importa el component desde una vista, quiere cargar una vista
@@ -38,6 +36,11 @@ const routes = [
         path: '/homeView',
         name: 'homeView',
         component: HomeView
+    },
+    {
+        path: '/filtrarDatos',
+        name: 'filtrarDatos',
+        component: FiltrarDatos
     },
 
     {

@@ -71,10 +71,9 @@ data(){
         
         agregarRegistro(){
             // console.log(this.poliza);
-
             var datosEnviar ={importe:this.poliza.importe,fecha:this.poliza.fecha,estado:this.poliza.estado,observaciones:this.poliza.observaciones,cliente_id:this.poliza.cliente_id}
        
-            fetch('http://localhost/proyectovuejs/?insertarPoliza=1',{
+            fetch('php/?insertarPoliza=1',{
 
                 method: 'POST',
                 body:JSON.stringify(datosEnviar)
@@ -85,10 +84,12 @@ data(){
                 console.log(datosRespuesta);
                 window.location.href = "listarPolizas";
             })
+            .catch(console.log)
+
         },
 
         dameClientes(){
-        fetch('http://localhost/proyectovuejs/?dameClientes')
+        fetch('php/?dameClientes')
         .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
 

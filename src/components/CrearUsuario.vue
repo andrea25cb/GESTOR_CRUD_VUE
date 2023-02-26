@@ -33,6 +33,7 @@
 </template>
 
 <script>
+
 export default {
 
 data(){
@@ -53,7 +54,7 @@ data(){
 
             var datosEnviar ={nombre:this.usuario.nombre,email:this.usuario.email,pass:this.usuario.pass}
        
-            fetch('http://localhost/proyectovuejs/?insertarUsuario=1',{
+            fetch('php/?insertarUsuario=1',{
 
                 method: 'POST',
                 body:JSON.stringify(datosEnviar)

@@ -88,7 +88,7 @@ data(){
         },
 
         damePolizas(){
-            fetch('http://localhost/proyectovuejs/?damePolizas')
+          fetch('http://localhost/proyectovuejs/?damePolizas')
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
 
@@ -108,7 +108,7 @@ data(){
         borrarpoliza(id){
            console.log(id);
            //'borrar' es un metodo php que esta dentro de la carpeta polizas!!
-           fetch('http://localhost/proyectovuejs/?borrarPoliza='+id)
+           fetch('php/?borrarPoliza='+id)
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
 

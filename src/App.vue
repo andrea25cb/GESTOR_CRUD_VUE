@@ -14,6 +14,7 @@
                       </button></div>
           <div class="collapse navbar-collapse text-white text-center align-items-center" id="navbarResponsive">
               <ul class="navbar-nav ms-auto text-white ">
+                <li type="button" class="nav-item mx-0 mx-lg-1 text-white rounded"><router-link to="/filtrarDatos" class="nav-link py-3 px-0 px-lg-3 rounded text-white">FILTRAR</router-link></li>
                   <li type="button" class="nav-item mx-0 mx-lg-1 text-white rounded"><router-link to="/listarClientes" class="nav-link py-3 px-0 px-lg-3 rounded text-white">CLIENTES</router-link></li>
                   <li type="button" class=" nav-item mx-0 mx-lg-1 text-white rounded"><router-link to="/listarUsuarios" class="nav-link py-3 px-0 px-lg-3 rounded text-white">USUARIOS</router-link></li>
                   <li type="button" class="nav-item mx-0 mx-lg-1 text-white rounded"><router-link to="/listarPolizas" class="nav-link py-3 px-0 px-lg-3 rounded text-white">POLIZAS</router-link></li>
@@ -21,9 +22,9 @@
               </ul>
           </div>
       </div>
-  </nav><br><br><br><br><br><br>
+  </nav><br><br><br>
    
-    <router-view/><br><br><br><br><br><br><br><br><br>
+    <router-view/><br><br><br><br><br><br><br><br><br><br>
     <div class="bg-dark fixed-bottom text-white text-center align-items-center"> Andrea Cordón Barrionuevo</div>
   </div>
 </template>

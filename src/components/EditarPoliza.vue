@@ -68,7 +68,7 @@ data(){
 
     methods:{
       obtenerID(){
-        fetch('http://localhost/proyectovuejs/?detallesPoliza='+this.$route.params.id)
+        fetch('php/?detallesPoliza='+this.$route.params.id)
             .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
 
@@ -84,7 +84,7 @@ data(){
         var datosEnviar ={importe:this.poliza.importe,fecha:this.poliza.fecha,estado:this.poliza.estado,observaciones:this.poliza.observaciones,cliente_id:this.poliza.cliente_id}
        
        
-            fetch('http://localhost/proyectovuejs/?editarPoliza='+this.$route.params.id,{
+            fetch('php/?editarPoliza='+this.$route.params.id,{
 
                 method: 'POST',
                 body:JSON.stringify(datosEnviar)
@@ -98,7 +98,7 @@ data(){
       },
       
       dameClientes(){
-        fetch('http://localhost/proyectovuejs/?dameClientes')
+        fetch('php/?dameClientes')
         .then(respuesta=>respuesta.json())
             .then((datosRespuesta)=>{
 

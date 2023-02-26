@@ -1,8 +1,9 @@
 <template>
 
     <div class="container rounded-5" id="listar">   
-        <br>
-        <h1 class="text-white"><strong>CLIENTES:</strong> </h1>  
+      
+        <h1 class="text-white"><strong>CLIENTES:</strong> </h1> 
+        <br> 
         <router-link :to="{name:'crearCliente'}" class="btn btn-success" style="float:none">NUEVO CLIENTE</router-link><br><br><br>
         <div class="card rounded-5">
      
@@ -39,7 +40,7 @@
                 </tr>   
             </tbody>
             </table>
-        </div>
+        </div><br>
         </div>
  
 </template>
@@ -62,6 +63,8 @@ data(){
 
     return{
         clientes:[],
+        id1:'',
+        id2:''
     }
 },
     mounted() {
